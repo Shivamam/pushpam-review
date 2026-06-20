@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pushpam Classes – QR Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Hind:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #FFF8F2;
+      font-family: 'Hind', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 40px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(255,107,0,0.12);
+      max-width: 380px;
+      width: 100%;
+      border: 2px solid #FFD9B8;
+    }
+    .top-label {
+      font-family: 'Baloo 2', cursive;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #FF6B00;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1A1A2E;
+      margin-bottom: 4px;
+    }
+    .sub {
+      color: #7A7A8A;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    #qr-container {
+      display: inline-block;
+      padding: 16px;
+      background: #fff;
+      border-radius: 16px;
+      border: 3px solid #FF6B00;
+      margin-bottom: 20px;
+    }
+    .scan-text {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1A1A2E;
+      margin-bottom: 6px;
+    }
+    .scan-sub {
+      font-size: 0.85rem;
+      color: #7A7A8A;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .divider {
+      border: none;
+      border-top: 1.5px solid #FFD9B8;
+      margin: 16px 0;
+    }
+    .url-box {
+      background: #FFF3EA;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #FF6B00;
+      word-break: break-all;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .print-btn {
+      background: linear-gradient(135deg, #FF6B00, #FF8C00);
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 30px;
+      font-family: 'Baloo 2', cursive;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(255,107,0,0.3);
+    }
+    .print-btn:hover { opacity: 0.9; }
+    .stars { font-size: 1.2rem; margin-bottom: 8px; }
+
+    /* update notice */
+    #url-notice {
+      background: #FFF3EA;
+      border: 1.5px dashed #FF6B00;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #7A7A8A;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .print-btn { display: none; }
+      #url-notice { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top-label">⭐ Share Your Experience</div>
+    <h1>Pushpam Classes</h1>
+    <div class="sub">Kurla East, Mumbai</div>
+
+    <div id="qr-container">
+      <div id="qr-code"></div>
+    </div>
+
+    <div class="scan-text">📱 Scan to Leave a Review</div>
+    <div class="scan-sub">Takes less than 1 minute!<br>Your feedback helps other students find us.</div>
+
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+
+    <hr class="divider"/>
+
+    <div id="url-notice">
+      ℹ️ Update the URL in this file with your GitHub Pages link before printing.
+    </div>
+
+    <div class="url-box" id="url-display">https://YOUR-USERNAME.github.io/pushpam-review/</div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Print This QR Code</button>
+  </div>
+
+  <script>
+    // ── UPDATE THIS URL after you deploy to GitHub Pages ──
+    const REVIEW_PAGE_URL = "https://YOUR-USERNAME.github.io/pushpam-review/";
+    // ──────────────────────────────────────────────────────
+
+    document.getElementById('url-display').textContent = REVIEW_PAGE_URL;
+
+    new QRCode(document.getElementById("qr-code"), {
+      text: REVIEW_PAGE_URL,
+      width: 220,
+      height: 220,
+      colorDark: "#1A1A2E",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
